@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My first Three.js app</title>
+    <style>
+        body { margin: 0; overflow: hidden;} /* bodyのスタイルを変更 */
+        #three-canvas {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: block;
+        }
+        #chat-container {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 300px;
+            height: 250px;
+            border: 1px solid #ccc;
+            background-color: rgba(245, 245, 245, 0.7); /* 半透明に変更 */
+            padding: 10px;
+        }
+        #chat-messages {
+            font-family: sans-serif;
+            font-size: 14px;
+            height: 170px;
+            overflow-y: scroll;
+        }
+        #message-form {
+            display: flex;
+            margin-top: 10px;
+            position: absolute;/*変更*/
+            bottom: 10px;/*変更*/
+            width: 280px;
+        }
+        #message-input {
+            flex-grow: 1;
+            margin-right: 5px;
+        }
+        #username-form {
+            display: flex;
+            margin-bottom: 10px;
+        }
+        #username-input {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="three-canvas"></canvas>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.163.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.163.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script type="module" src="{{ url_for('static', filename='main.js') }}"></script>
+
+    <div id="chat-container">
+        <div id = "username-form">
+            <label for="username-input">ユーザー名:</label>
+            <input type="text" id="username-input">
+            <button id="save-username">保存</button>
+        </div>
+        <div id="chat-messages"></div>
+        <div id="message-form">
+            <input type="text" id="message-input">
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+</body>
+</html>
